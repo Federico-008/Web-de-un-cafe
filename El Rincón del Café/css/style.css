@@ -1,0 +1,721 @@
+:root {
+    --fuenteHeading: "PT Sans", sans-serif;
+    --fuenteParrafo: "Open Sans", sans-serif;
+    --colorPrimario: #784d3c;
+    --gris: #e1e1e1;
+    --blanco: #ffffff;
+    --negro: #000000;
+    --marron: #786c3b;
+    --marronoscuro: #776b35;
+
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    /* 1 REM = 10PX*/
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: var(--fuenteParrafo);
+    font-size: 1.6rem;
+    line-height: 2;
+    background-color: var(--marron);
+    overflow-x: hidden;
+}
+
+/*Globales*/
+.contenedor {
+    max-width: 120rem;
+    width: 95%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--fuenteHeading);
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 3.6rem;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+h3 {
+    font-size: 2.4rem;
+}
+
+h4 {
+    font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 4.8rem;
+    }
+
+    h2 {
+        font-size: 4rem;
+    }
+
+    h3 {
+        font-size: 3.2rem;
+    }
+
+    h4 {
+        font-size: 2.8rem;
+    }
+}
+
+img {
+    max-width: 100%;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s ease;
+}
+
+img.derecha {
+    transform: translateX(50px);
+}
+
+img.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/*Utilidades*/
+.no-margin {
+    margin: 0;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.centrar-texto {
+    text-align: center;
+}
+
+/*Header*/
+.header {
+    background-image: url(../img/banner.jpg);
+    height: 40rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+@media (min-width: 768px) {
+    .header {
+        height: 60rem;
+    }
+}
+
+.header__texto {
+    text-align: center;
+    color: var(--blanco);
+    margin-top: 5rem;
+}
+
+@media (min-width: 768px) {
+    .header__texto {
+        margin-top: 15rem;
+    }
+}
+
+.barra {
+    padding-top: 4rem;
+}
+
+@media (min-width:768px) {
+    .barra {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.logo {
+    color: var(--blanco);
+}
+
+.logo__nombre {
+    font-weight: 400;
+}
+
+.logo__bold {
+    font-weight: 700;
+}
+
+/* Navegación responsive */
+.navegacion {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 2rem;
+    z-index: 1000;
+}
+
+.navegacion.activo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.navegacion__enlace {
+    display: block;
+    text-align: center;
+    font-size: 2.4rem;
+    color: var(--blanco);
+    margin: 1.5rem 0;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.navegacion__enlace:hover {
+    color: var(--colorPrimario);
+    transform: scale(1.1);
+}
+
+/* Botón de menú móvil */
+.menu-mobile {
+    display: block;
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 1001;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.menu-mobile span {
+    display: block;
+    width: 3rem;
+    height: 0.3rem;
+    background-color: var(--blanco);
+    margin: 0.6rem 0;
+    transition: all 0.3s ease;
+}
+
+.menu-mobile.activo span:nth-child(1) {
+    transform: rotate(45deg) translate(0.8rem, 0.8rem);
+}
+
+.menu-mobile.activo span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-mobile.activo span:nth-child(3) {
+    transform: rotate(-45deg) translate(0.8rem, -0.8rem);
+}
+
+@media (min-width: 768px) {
+    .menu-mobile {
+        display: none;
+    }
+
+    .navegacion {
+        display: flex;
+        position: static;
+        background-color: transparent;
+        padding: 0;
+        height: auto;
+        width: auto;
+    }
+
+    .navegacion__enlace {
+        font-size: 1.8rem;
+        margin: 0;
+        padding: 0.5rem 1rem;
+    }
+
+    .navegacion__enlace:hover {
+        transform: translateY(-2px);
+    }
+}
+
+/* Ajustes específicos para tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .navegacion__enlace {
+        font-size: 2rem;
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+/* Formulario responsive */
+.formulario {
+    position: relative;
+    background-color: var(--marronoscuro);
+    width: 95%;
+    max-width: 800px;
+    margin: -5rem auto 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.campo__label {
+    flex: 0 0 auto;
+    text-align: left;
+    color: var(--blanco);
+    font-size: 1.6rem;
+}
+
+.campo__field,
+.campo__field--textarea {
+    width: 100%;
+    padding: 1.2rem;
+    border: 1px solid var(--gris);
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    background-color: var(--blanco);
+}
+
+.campo__field--textarea {
+    height: 15rem;
+    resize: vertical;
+    min-height: 12rem;
+    padding: 1.2rem;
+    font-family: var(--fuenteParrafo);
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+@media (min-width: 768px) {
+    .formulario {
+        padding: 3rem;
+    }
+
+    .campo {
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    .campo__label {
+        flex: 0 0 9rem;
+        text-align: right;
+    }
+}
+
+/* Ajustes para el botón de enviar */
+.boton {
+    display: inline-block;
+    width: auto;
+    min-width: 20rem;
+    padding: 1.5rem 3rem;
+    font-family: var(--fuenteHeading);
+    color: var(--blanco);
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 2rem auto;
+    box-shadow: 3px 3px 5px rgba(3, 0, 0, 0.1);
+    cursor: pointer;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.boton--primario {
+    background-color: var(--negro);
+}
+
+.boton--secundario {
+    background-color: var(--colorPrimario);
+}
+
+/* Animación de la taza de café */
+.coffee-cup {
+    position: absolute;
+    width: 100px;
+    height: 80px;
+    z-index: 100;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.cup {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.cup-body {
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    background: #ffffff;
+    border-radius: 0 0 50px 50px;
+    border: 4px solid #333;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.cup-handle {
+    position: absolute;
+    right: -25px;
+    top: 20%;
+    width: 25px;
+    height: 35px;
+    border: 4px solid #353434;
+    border-radius: 0 10px 10px 0;
+}
+
+.coffee {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    height: 15px;
+    background: var(--colorPrimario);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.face {
+    position: absolute;
+    top: 35%;
+    width: 100%;
+    text-align: center;
+}
+
+.eyes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 8px;
+}
+
+.eye {
+    width: 12px;
+    height: 12px;
+    background: #020202;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.eye::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    border-bottom: 4px solid #333;
+    transition: top 0.3s ease;
+    z-index: 1;
+}
+
+.pupil {
+    width: 6px;
+    height: 6px;
+    background: #fafafa;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.1s ease;
+    z-index: 0;
+}
+
+.eye.blink::before {
+    top: 0;
+}
+
+.mouth {
+    width: 25px;
+    height: 12px;
+    border-radius: 0 0 25px 25px;
+    border: 3px solid #333;
+    border-top: 0;
+    margin: 8px auto 0;
+    transition: all 0.3s ease;
+}
+
+.face.happy .mouth {
+    height: 15px;
+    border-radius: 0 0 30px 30px;
+}
+
+.face.super-happy .mouth {
+    height: 18px;
+    border-radius: 0 0 35px 35px;
+    transform: translateY(-2px);
+}
+
+/* Posicionamiento responsive de la taza */
+@media (min-width: 1024px) {
+    .coffee-cup {
+        width: 120px;
+        height: 100px;
+        right: -150px;
+        top: 20px;
+    }
+
+    .face {
+        top: 40%;
+    }
+
+    .eye {
+        width: 14px;
+        height: 14px;
+    }
+
+    .pupil {
+        width: 7px;
+        height: 7px;
+    }
+
+    .mouth {
+        width: 30px;
+        height: 14px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .coffee-cup {
+        right: 50%;
+        top: -120px;
+        transform: translateX(50%);
+        width: 110px;
+        height: 90px;
+    }
+
+    .face {
+        top: 38%;
+    }
+
+    .eye {
+        width: 13px;
+        height: 13px;
+    }
+
+    .pupil {
+        width: 6.5px;
+        height: 6.5px;
+    }
+
+    .mouth {
+        width: 28px;
+        height: 13px;
+    }
+}
+
+@media (max-width: 767px) {
+    .coffee-cup {
+        width: 100px;
+        height: 80px;
+        top: -100px;
+    }
+
+    .face {
+        top: 35%;
+    }
+
+    .eye {
+        width: 12px;
+        height: 12px;
+    }
+
+    .pupil {
+        width: 6px;
+        height: 6px;
+    }
+
+    .mouth {
+        width: 25px;
+        height: 12px;
+    }
+
+    .formulario {
+        padding: 1.5rem;
+        margin-top: -3rem;
+    }
+
+    .campo__field,
+    .campo__field--textarea {
+        padding: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .campo__field--textarea {
+        padding: 1rem;
+        font-size: 1.6rem;
+        min-height: 10rem;
+    }
+
+    .boton {
+        width: 100%;
+        padding: 1.2rem;
+        font-size: 1.6rem;
+        margin: 1.5rem 0;
+    }
+}
+
+/* Ajustes para el contenido del formulario */
+.formulario__contenido {
+    position: relative;
+    width: 100%;
+    padding-top: 1rem;
+}
+
+/* Asegurar que el formulario sea legible en todos los dispositivos */
+.campo__field::placeholder,
+.campo__field--textarea::placeholder {
+    font-size: 1.4rem;
+    color: #999;
+}
+
+/* Mejorar la visibilidad del botón en dispositivos móviles */
+.boton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.boton:active {
+    transform: translateY(0);
+}
+
+.cursos {
+    list-style: none;
+}
+
+.widget-curso {
+    border-bottom: 1px solid var(--gris);
+    margin-bottom: 2rem;
+}
+
+.widget-curso:last-of-type {
+    border: none;
+    margin-bottom: 0;
+}
+
+.widget-curso__label {
+    font-family: var(--fuenteHeading);
+    font-weight: bold;
+}
+
+.widget-curso__info {
+    font-weight: 400;
+}
+
+.widget-curso__label,
+.widget-curso__info {
+    font-size: 1.8rem;
+}
+
+/* Sobre Nosotros */
+
+@media (min-width: 768px) {
+    .sobre-nosotros {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2rem;
+    }
+}
+
+/** Cursos **/
+.curso {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--gris);
+}
+
+@media (min-width: 768px) {
+    .curso {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        column-gap: 2rem;
+        padding: 3rem 0;
+    }
+}
+
+.curso:last-of-type {
+    border: none;
+}
+
+.curso__label {
+    font-family: var(--fuenteHeading);
+    font-weight: bold;
+}
+
+.curso__info {
+    font-weight: 400;
+}
+
+.curso__label,
+.curso__info {
+    font-size: 1.8rem;
+}
+
+/** Contacto **/
+
+.contacto-bg {
+    background-image: url(../img/contacto.jpg);
+    height: 40rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--negro);
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+
+@media (min-width: 768px) {
+    .footer {
+        padding: 3rem 0;
+    }
+}
+
+/* Clases para las Animaciones */
+.entrada p,
+.widget-curso,
+.sobre-nosotros__texto,
+.curso__descripcion {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s ease;
+}
+
+.entrada p.visible,
+.widget-curso.visible,
+.sobre-nosotros__texto.visible,
+.curso__descripcion.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
